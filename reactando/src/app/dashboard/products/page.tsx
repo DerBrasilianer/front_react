@@ -26,25 +26,21 @@ const ProductsListPage = async () => {
 
     return (
 
-        <div>
+        <div className="container mx-auto p-4">
 
-            <h1>Products List Page</h1>
+            <h1 className="text-3xl font-bold mb-6">Products List Page</h1>
 
-            {
+            <div className="content grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
 
-                data?.map((product) => (
+                {data?.map((product) => (
 
-                    <ProductComponent key={product.id} product={product} />
+                        <ProductComponent key={product.id} product={product} />
 
-                ))
+                ))}
 
-            }
+                {data.length === 0 && <p className="text-gray-600">No products found</p>}
 
-            {
-
-                data.length === 0 && <p>No products found</p>
-
-            }
+            </div>
 
         </div>
 
