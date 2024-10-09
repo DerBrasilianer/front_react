@@ -4,13 +4,17 @@ const SettingsPage = () => {
 
     return (
 
-        <div>
+        <div className="flex items-center justify-center h-screen">
 
-            <h1>Settings Page</h1>
+            <div className="text-center">
 
-            <p>This is the settings page</p>
+                <h1 className="text-4x1 font-bold text-white-900">Settings Page</h1>
 
-            <Button></Button>
+                <p className="text-white-700">This is the settings page</p>
+
+                <Button></Button>
+
+            </div>
 
         </div>
 
