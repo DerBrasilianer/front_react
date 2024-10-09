@@ -2,6 +2,7 @@
 
 import ProductsListPage from "@/app/dashboard/products/page"
 import { Product } from "@/interfaces/product"
+import { GenericListResponse } from "@/interfaces/response"
 import { useState } from "react"
 
 interface ProductsListProps {
@@ -13,9 +14,47 @@ interface ProductsListProps {
 const ProductsListNextPageComponent = ({ perPage = 12 }: ProductsListProps) => {
 
     const [data, setData] = useState<Product[]>([])
-    const [hasMore, setHasMore] = useState(true)
-    const [loading, setLoading] = useState(false)
     const [page, setPage] = useState(1)
+    const [hasMore, setHasMore] = useState<boolean>(true)
+    const [loading, setLoading] = useState<boolean>(false)
+
+    const getData = async () => {
+
+        if (!hasMore || loading) {
+
+            return
+
+        }
+
+        try {
+
+            setLoading(true)
+            setPage(page + 1)
+
+            const request = await fetch(`https://dummyjson.com/products?limit=10&skip=${page * perPage}&select=title,price`)
+
+            const response: GenericListResponse<'products', Array<Product>> = await request.json()
+
+            setData([...data, ...response.products])
+
+            if (response.products.length === 0) {
+
+                setHasMore(false)
+
+            }
+
+        } catch (error) {
+
+            setHasMore(false)
+            console.error(`Error fetching products: ${error}`)
+
+        } finally {
+
+            setLoading(false)
+
+        }
+
+    }
 
     return (
 
