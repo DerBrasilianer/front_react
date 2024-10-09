@@ -1,4 +1,5 @@
 import ProductComponent from "@/components/product/Product";
+import ProductsListNextPage from "@/components/product/ProductsListNextPage";
 import { Product } from "@/interfaces/product";
 import { GenericListResponse } from "@/interfaces/response";
 
@@ -34,11 +35,13 @@ const ProductsListPage = async () => {
 
                 {data?.map((product) => (
 
-                        <ProductComponent key={product.id} product={product} />
+                    <ProductComponent key={product.id} product={product} />
 
                 ))}
 
                 {data.length === 0 && <p className="text-gray-600">No products found</p>}
+
+                {data.length > 0 && (<ProductsListNextPage />)}
 
             </div>
 
