@@ -2,7 +2,7 @@ const Button = () => {
 
     try {
         
-        console.log(invalidVariable)
+        //console.log(invalidVariable)
 
     } catch (error) {
 
