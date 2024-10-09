@@ -1,3 +1,4 @@
+import ProductComponent from "@/components/product/Product";
 import { Product } from "@/interfaces/product";
 import { GenericListResponse } from "@/interfaces/response";
 
@@ -33,13 +34,7 @@ const ProductsListPage = async () => {
 
                 data?.map((product) => (
 
-                    <div key={product.id}>
-
-                        <h2>{product.title}</h2>
-
-                        <p>{product.price}</p>
-
-                    </div>
+                    <ProductComponent key={product.id} product={product} />
 
                 ))
 
