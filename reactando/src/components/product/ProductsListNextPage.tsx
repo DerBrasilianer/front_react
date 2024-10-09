@@ -1,6 +1,5 @@
 'use client'
 
-import ProductsListPage from "@/app/dashboard/products/page"
 import { Product } from "@/interfaces/product"
 import { GenericListResponse } from "@/interfaces/response"
 import { useState } from "react"
@@ -14,7 +13,7 @@ interface ProductsListProps {
 const ProductsListNextPageComponent = ({ perPage = 12 }: ProductsListProps) => {
 
     const [data, setData] = useState<Product[]>([])
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState<number>(1)
     const [hasMore, setHasMore] = useState<boolean>(true)
     const [loading, setLoading] = useState<boolean>(false)
 
@@ -31,7 +30,7 @@ const ProductsListNextPageComponent = ({ perPage = 12 }: ProductsListProps) => {
             setLoading(true)
             setPage(page + 1)
 
-            const request = await fetch(`https://dummyjson.com/products?limit=10&skip=${page * perPage}&select=title,price`)
+            const request = await fetch(`https://dummyjson.com/products?limit=12&skip=${page * perPage}&select=title,price`)
 
             const response: GenericListResponse<'products', Array<Product>> = await request.json()
 
