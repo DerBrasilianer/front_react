@@ -66,7 +66,7 @@ const ProductsListNextPageComponent = ({ perPage = 12 }: ProductsListProps) => {
 
                     hasMore && (
 
-                        <button className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${loading ? 'opacity-58 cursor-not-allowed' : ''}`}>
+                        <button onClick={getData} className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${loading ? 'opacity-58 cursor-not-allowed' : ''}`}>
 
                             {loading ? 'loading...' : 'Load More'}
 
